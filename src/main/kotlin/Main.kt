@@ -1,5 +1,6 @@
 package me.amlu
 
+import com.google.gson.Gson
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -21,9 +22,14 @@ fun main() {
     val json = response?.body()
     println(json)
 
-    val meuJogo = Jogo()
-    meuJogo.titulo = "Age of Empires"
-    meuJogo.capa = "https://www.cheapshark.com/api/1.0/games?id=612"
+    /**
+     * Instantiates a new Gson object
+     * Gson
+     */
+    val gson = Gson()
+
+    val meuJogo = gson.fromJson(json, InfoJogo::class.java)
+
 
     println(meuJogo)
 
