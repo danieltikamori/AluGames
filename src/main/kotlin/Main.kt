@@ -24,13 +24,25 @@ fun main() {
 
     /**
      * Instantiates a new Gson object
-     * Gson
      */
     val gson = Gson()
 
-    val meuJogo = gson.fromJson(json, InfoJogo::class.java)
+    /**
+     * Deserializes the JSON string into an object
+     */
+    val meuInfoJogo = gson.fromJson(json, InfoJogo::class.java)
 
+    /**
+     * Instantiates a new Jogo object
+     */
+    val meuJogo = Jogo(
+        meuInfoJogo.info.title,
+        meuInfoJogo.info.thumb
+    )
 
+    /**
+     *  Prints the Jogo object
+     */
     println(meuJogo)
 
 }
